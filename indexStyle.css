@@ -1,0 +1,735 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body.recap-page {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #1c1917;
+  background: #f7f3ea;
+}
+
+.recap-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1rem;
+  background: rgba(247, 243, 234, 0.92);
+  border-bottom: 1px solid #e4ddd0;
+  backdrop-filter: blur(8px);
+}
+
+.recap-nav a {
+  color: #5c564e;
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.recap-nav a:hover {
+  color: #1c1917;
+}
+
+.hero {
+  min-height: 72vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem 5rem;
+  background:
+    radial-gradient(circle at 18% 12%, #9faf88 0, transparent 36%),
+    radial-gradient(circle at 88% 88%, #82926b 0, transparent 34%),
+    #6f8059;
+  color: #faf8f5;
+}
+
+.eyebrow,
+.hero-kicker,
+.hero-names {
+  margin: 0;
+}
+
+.eyebrow {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.hero-kicker {
+  margin-top: 1.1rem;
+  font-size: 1.05rem;
+}
+
+.hero h1 {
+  margin: 0.35rem 0 0.6rem;
+  font-size: clamp(4.5rem, 16vw, 8.5rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+.hero-names {
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.collage-main {
+  width: min(72rem, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 3.5rem 0 6rem;
+}
+
+.collage-section {
+  margin-bottom: 5.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6f8059;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+
+.section-header h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.85rem, 4vw, 2.45rem);
+  font-weight: 500;
+  color: #1c1917;
+}
+.section-desc {
+  margin: 0 auto;
+  max-width: 32rem;
+  font-size: 1.02rem;
+  color: #6b635b;
+}
+
+/* ==========================================================================
+   Scrapbook Grid & Polaroid Styles
+   ========================================================================== */
+
+.scrapbook-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.75rem 1.5rem;
+  align-items: start;
+}
+
+.polaroid-item {
+  position: relative;
+  grid-column: span 4;
+  background: #ffffff;
+  padding: 0.85rem 0.85rem 1.15rem;
+  border-radius: 2px;
+  box-shadow:
+    0 4px 16px rgba(35, 30, 20, 0.08),
+    0 1px 3px rgba(35, 30, 20, 0.04);
+  cursor: default;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
+  user-select: none;
+}
+
+.polaroid-item:hover {
+  transform: translateY(-8px) scale(1.025) rotate(0deg) !important;
+  box-shadow:
+    0 18px 38px rgba(35, 30, 20, 0.16),
+    0 4px 12px rgba(35, 30, 20, 0.08);
+  z-index: 10;
+}
+
+.polaroid-wide {
+  grid-column: span 6;
+}
+
+.polaroid-tall {
+  grid-column: span 4;
+}
+
+/* Tilts */
+.tilt-left-1 { transform: rotate(-1.5deg); }
+.tilt-right-1 { transform: rotate(1.8deg); }
+.tilt-left-2 { transform: rotate(-2.8deg); }
+.tilt-right-2 { transform: rotate(2.4deg); }
+
+.polaroid-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #eae4d7;
+  border-radius: 1px;
+}
+
+.polaroid-wide .photo-box {
+  aspect-ratio: 16 / 10;
+}
+
+.polaroid-tall .photo-box {
+  aspect-ratio: 3 / 4;
+}
+
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.polaroid-item:hover .photo-box img {
+  transform: scale(1.03);
+}
+
+.photo-box img.is-missing {
+  display: none !important;
+}
+
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 20%, #f6f0e4 0, transparent 60%),
+    #ede5d6;
+  color: #7a7062;
+  text-align: center;
+  padding: 1rem;
+}
+
+.photo-box img:not(.is-missing) + .photo-placeholder {
+  display: none;
+}
+
+.ph-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.35rem;
+}
+
+.ph-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #3f3932;
+}
+
+.ph-path {
+  font-size: 0.72rem;
+  color: #8c8273;
+  font-family: ui-monospace, Consolas, monospace;
+  margin-top: 0.2rem;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+.polaroid-caption {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.caption-text {
+  margin: 0;
+  font-size: 1.02rem;
+  color: #2b2621;
+}
+
+.caption-date {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: #887e71;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Washi Tape & Pins
+   ========================================================================== */
+
+.tape {
+  position: absolute;
+  height: 24px;
+  width: 86px;
+  background: rgba(232, 225, 208, 0.78);
+  backdrop-filter: blur(2px);
+  border-left: 2px dashed rgba(175, 162, 140, 0.4);
+  border-right: 2px dashed rgba(175, 162, 140, 0.4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tape-center {
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.tape-top {
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0.5deg);
+}
+
+.tape-corner-left {
+  top: -8px;
+  left: -14px;
+  transform: rotate(-34deg);
+}
+
+.tape-corner-right {
+  top: -8px;
+  right: -14px;
+  transform: rotate(34deg);
+}
+
+.pin {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8c779, #b8860b 70%, #684803);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.32);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.pin-top {
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ==========================================================================
+   Scrapbook Extras: Note, Stamp & Photo Booth
+   ========================================================================== */
+
+.scrapbook-note {
+  grid-column: span 4;
+  position: relative;
+  background: #fff9de;
+  padding: 1.75rem 1.4rem 1.4rem;
+  border-radius: 2px;
+  box-shadow:
+    0 4px 15px rgba(40, 35, 20, 0.07),
+    0 1px 3px rgba(40, 35, 20, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+
+.note-quote {
+  margin: 0 0 1rem;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #38311e;
+}
+
+.note-author {
+  display: block;
+  text-align: right;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6f8059;
+}
+
+.scrapbook-stamp {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 1rem;
+}
+
+.stamp-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px dashed #82926b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #6f8059;
+  transform: rotate(-10deg);
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.stamp-circle:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.stamp-stars {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.15rem;
+}
+
+.stamp-main {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.stamp-sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  margin-top: 0.15rem;
+}
+
+.photobooth-strip {
+  grid-column: span 3;
+  position: relative;
+  background: #ffffff;
+  padding: 1.1rem 0.75rem 0.9rem;
+  border-radius: 2px;
+  box-shadow:
+    0 4px 16px rgba(35, 30, 20, 0.08),
+    0 1px 3px rgba(35, 30, 20, 0.04);
+  text-align: center;
+}
+
+.strip-header {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: #7a7062;
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+}
+
+.strip-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.strip-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #ede6d9;
+  overflow: hidden;
+  cursor: default;
+  border-radius: 1px;
+}
+
+.strip-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.strip-item img.is-missing {
+  display: none !important;
+}
+
+.strip-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8c8273;
+}
+
+.strip-item img:not(.is-missing) + .strip-ph {
+  display: none;
+}
+
+.strip-footer {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: #6f8059;
+  margin-top: 0.65rem;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Seasons Grid (Moments)
+   ========================================================================== */
+
+.seasons-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.season-card {
+  background: #fffdf9;
+  border: 1px solid #e7ded0;
+  border-radius: 3px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(30, 25, 15, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.season-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(30, 25, 15, 0.08);
+}
+
+.season-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6f8059;
+  background: #f1ebd9;
+  padding: 0.2rem 0.65rem;
+  border-radius: 12px;
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+}
+
+.season-card h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #231f1c;
+}
+
+.season-card p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: #59524a;
+}
+
+/* ==========================================================================
+   Stats Collage (El nostre any)
+   ========================================================================== */
+
+.stats-collage {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background: #fffdf9;
+  border: 1px solid #e7ded0;
+  border-radius: 3px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(30, 25, 15, 0.03);
+  transition: transform 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-num {
+  display: block;
+  font-size: clamp(2.2rem, 5vw, 2.75rem);
+  font-weight: 600;
+  color: #6f8059;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-family: Georgia, serif;
+}
+
+.stat-title {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #2a2520;
+  margin-bottom: 0.35rem;
+}
+
+.stat-sub {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #7d7468;
+}
+
+/* ==========================================================================
+   Letter Section (Carta)
+   ========================================================================== */
+
+.letter-container {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.letter-paper {
+  position: relative;
+  background: #fffefb;
+  border: 1px solid #e5dccf;
+  padding: 3.5rem 3rem;
+  box-shadow:
+    0 8px 30px rgba(35, 30, 20, 0.07),
+    0 1px 4px rgba(35, 30, 20, 0.04);
+  border-radius: 3px;
+}
+
+.letter-paper::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #ede4d7;
+  pointer-events: none;
+}
+
+.letter-stamp {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.letter-paper h2 {
+  text-align: center;
+  margin: 0 0 2rem;
+  font-size: 1.85rem;
+  font-weight: 500;
+  color: #231f1c;
+}
+
+.letter-body {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #3b352e;
+}
+
+.letter-greeting {
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.letter-body p {
+  margin: 0 0 1.25rem;
+}
+
+.letter-love {
+  margin-top: 2rem !important;
+  font-style: italic;
+}
+
+.letter-signature {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #6f8059;
+  margin-top: 0.25rem !important;
+}
+
+/* ==========================================================================
+   Lightbox Modal
+   ========================================================================== */
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .scrapbook-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+
+  .polaroid-item,
+  .polaroid-tall {
+    grid-column: span 3;
+  }
+
+  .polaroid-wide {
+    grid-column: span 6;
+  }
+
+  .scrapbook-note {
+    grid-column: span 3;
+  }
+
+  .photobooth-strip {
+    grid-column: span 3;
+  }
+
+  .scrapbook-stamp {
+    grid-column: span 3;
+  }
+
+  .seasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .scrapbook-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .polaroid-item,
+  .polaroid-tall,
+  .polaroid-wide,
+  .scrapbook-note,
+  .photobooth-strip,
+  .scrapbook-stamp {
+    grid-column: span 1;
+    transform: none !important;
+  }
+
+  .seasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .letter-paper {
+    padding: 2.5rem 1.5rem;
+  }
+}
+

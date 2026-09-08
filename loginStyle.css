@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Georgia, "Georgia", serif;
+  color: #1c1917;
+  background: #6f8059;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background:
+    radial-gradient(circle at 20% 10%, #9faf88 0, transparent 42%),
+    radial-gradient(circle at 90% 90%, #82926b 0, transparent 38%),
+    #6f8059;
+}
+
+.login-card {
+  width: min(100%, 22rem);
+  padding: 2.25rem 2rem 2rem;
+  background: #fffdf9;
+  border: 1px solid #e7dfd3;
+  box-shadow: 0 18px 40px rgba(60, 40, 20, 0.08);
+}
+
+.login-card h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.login-subtitle {
+  margin: 0 0 1.5rem;
+  color: #6b635b;
+  font-size: 0.95rem;
+}
+
+.login-card label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b635b;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #d6cdc0;
+  background: #fff;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.login-card input:focus {
+  outline: 2px solid #1c1917;
+  outline-offset: 1px;
+}
+
+.login-error {
+  margin: 0.7rem 0 0;
+  color: #9f2d2d;
+  font-size: 0.9rem;
+}
+
+.login-card button {
+  display: block;
+  width: 100%;
+  margin-top: 1.15rem;
+  padding: 0.75rem 1rem;
+  border: 0;
+  background: #1c1917;
+  color: #faf8f5;
+  font: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #3f3a36;
+}
